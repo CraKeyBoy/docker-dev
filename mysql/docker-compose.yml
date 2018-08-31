@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  mysql:
+    image: mysql:5.7.22
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=Passw0rd
+      - TZ=Asia/Shanghai
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+      - ./conf:/etc/mysql/conf.d
