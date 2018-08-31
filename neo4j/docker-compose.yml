@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  neo4j:
+    image: neo4j:3.4
+    restart: unless-stopped
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    ## https://github.com/neo4j/docker-neo4j/blob/284d530867e364c29a182fa81120ddd53d5532f4/src/3.4/docker-entrypoint.sh
+    ## 如果导入的时候出现neo4j jvm内存溢出，可以在导入前，先把neo4j下的conf/neo4j.conf中的dbms.memory.heap.initial_size 和dbms.memory.heap.max_size调大点。导入完成后再把值改回去
+    environment:
+      - NEO4J_dbms_memory_heap_maxSize=512M
+    volumes:
+      - ./data/neo4j_data/data:/data
+      - ./data/neo4j_data/logs:/logs
+      - ./data/neo4j_data/import:/import
