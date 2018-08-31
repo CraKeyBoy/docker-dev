@@ -11,6 +11,6 @@ services:
     environment:
       - NEO4J_dbms_memory_heap_maxSize=512M
     volumes:
-      - ./data/neo4j_data/data:/data
-      - ./data/neo4j_data/logs:/logs
-      - ./data/neo4j_data/import:/import
+      - ./data:/data
+      - ./logs:/logs
+      - ./import:/import
