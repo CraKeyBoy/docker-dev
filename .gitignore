@@ -1,4 +1,2 @@
-mysql/data
-mysql/logs
-mongo/data
-mongo/logs
+*/data
+*/logs
