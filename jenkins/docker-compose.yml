@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  jenkinsci:
+    build: 
+      context: jenkins-docker
+    restart: unless-stopped
+    environment:
+      JAVA_OPTS: "-Djava.awt.headless=true -Djava.util.logging.config.file=/var/jenkins_home/log.properties"
+    ports:
+      - "50000:50000"
+      - "9099:8080"
+    volumes:
+      - ./jenkins_home/:/var/jenkins_home

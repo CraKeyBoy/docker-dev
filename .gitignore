@@ -1,3 +1,5 @@
 */data
 */logs
 neo4j/import
+!jenkins/jenkins_home/log.properties
+jenkins/jenkins_home
