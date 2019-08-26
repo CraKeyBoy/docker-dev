@@ -1,0 +1,37 @@
+version: '3'
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports:
+      - "8083:8083"
+      - "8086:8086"
+    environment:
+      - ADMIN_USER="root"
+      - INFLUXDB_INIT_PWD="237356573"
+      - PRE_CREATE_DB="telegraf"
+    volumes:
+      # Data persistency
+      - ./influxdb/data:/var/lib/influxdb
+
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    links:
+      - influxdb
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - ./demo/logs:/tmp/logs
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    # env_file:
+    #   - 'env.grafana'
+    links:
+      - influxdb
+    volumes:
+      # Data persistency
+      - ./grafana:/var/lib/grafana

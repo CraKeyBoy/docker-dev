@@ -3,3 +3,11 @@
 neo4j/import
 !jenkins/jenkins_home/log.properties
 jenkins/jenkins_home
+elastic/es6
+influxdb-grafana/grafana
+influxdb-grafana/influxdb
+influxdb-grafana/demo
+DistroElastic/odfe-data1
+DistroElastic/odfe-data2
+*/site
+.DS_Store
