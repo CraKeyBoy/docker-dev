@@ -34,7 +34,7 @@ services:
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms2028m -Xmx2048m"
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
       - TZ=Asia/Shanghai
     ulimits:
       memlock:
