@@ -1,4 +1,5 @@
 */data
+*/data_bak
 */logs
 neo4j/import
 !jenkins/jenkins_home/log.properties
@@ -9,5 +10,6 @@ influxdb-grafana/influxdb
 influxdb-grafana/demo
 DistroElastic/odfe-data1
 DistroElastic/odfe-data2
+SkyWalking/es
 */site
 .DS_Store
