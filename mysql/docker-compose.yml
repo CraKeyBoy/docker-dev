@@ -2,6 +2,8 @@ version: '3.1'
 services:
   mysql:
     image: mysql:5.7.22
+    hostname: mysql5
+    container_name: mysql5
     ports:
       - 3306:3306
     restart: unless-stopped
@@ -13,3 +15,9 @@ services:
       - ./data:/var/lib/mysql
       - ./logs/mysql:/var/log/mysql
       - ./conf:/etc/mysql/conf.d
+    networks: 
+      - local_net
+    
+networks:
+  local_net:
+    external: true
