@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+    xxl-job-admin:
+        image: xuxueli/xxl-job-admin:2.3.0
+        ports: 
+            - 9080:9080
+        volumes:
+            - ./logs:/data/applogs 
+            - ./config:/config
+        environment:
+            - PARAMS=-Dfile.encoding=utf-8 --spring.config.location=/config/application.properties
+            - JAVA_OPTS=-Xmx320M -Xms320M -Xmn64M -XX:MaxMetaspaceSize=64M -XX:MetaspaceSize=64M -XX:+UseParallelGC -XX:+UseAdaptiveSizePolicy -XX:MaxGCPauseMillis=100 -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:ErrorFile=logs/hs_err_pid%p.log
+        networks: 
+            - local_net
+        restart: unless-stopped
+
+networks:
+  local_net:
+    external: true
